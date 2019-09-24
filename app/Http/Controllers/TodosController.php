@@ -50,12 +50,16 @@ class TodosController extends Controller
             'description' => 'required|min:10'
             ]);
         $data = request()->all();
-        $todo = new Todo();
+        $todo = Todo::find($todoId);
         $todo->name = $data["name"];
         $todo->description = $data["description"];
         $todo->completed = false;
         $todo->save();
         return redirect('/todos');
+    }
+
+    public function delete(){
+
     }
 
 
