@@ -9,6 +9,7 @@
                         <div class="card-body">
                                 {{$todo->description}}
                         </div>
+                        <a href="/todos/{{$todo->id}}/edit" class="btn btn-warning"> Update</a>
                     </div>
         </div>
     </div>
