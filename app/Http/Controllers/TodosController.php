@@ -35,22 +35,23 @@ class TodosController extends Controller
         $todo->description = $data["description"];
         $todo->completed = false;
         $todo->save();
+        session()->flash('success', ' Todo created Sucessfully');
         return redirect('/todos');
     }
 
-    public function update($todoId){
-        $todo = Todo::find($todoId);
+    public function update(Todo $todo){
+        // $todo = Todo::find($todoId);
         return view('todos.update')->with("todo", $todo);
 
     }
-    public function update_todo($todoId){
+    public function update_todo(Todo $todo){
         // dd(request()->all());
         $this->validate(request(), [
             'name'=> 'required|min:6|max:50',
             'description' => 'required|min:10'
             ]);
         $data = request()->all();
-        $todo = Todo::find($todoId);
+        // $todo = Todo::find($todoId);
         $todo->name = $data["name"];
         $todo->description = $data["description"];
         $todo->completed = false;
@@ -58,8 +59,8 @@ class TodosController extends Controller
         return redirect('/todos');
     }
 
-    public function delete($todoId){
-        $todo = Todo::find($todoId);
+    public function delete(Todo $todo){
+        // $todo = Todo::find($todoId);
         $todo->delete();
         return redirect('/todos');
     }
