@@ -56,15 +56,23 @@ class TodosController extends Controller
         $todo->description = $data["description"];
         $todo->completed = false;
         $todo->save();
+        session()->flash('success', ' Todo Updated Sucessfully');
         return redirect('/todos');
     }
 
     public function delete(Todo $todo){
         // $todo = Todo::find($todoId);
         $todo->delete();
+        session()->flash('success', ' Todo Deleted Sucessfully');
         return redirect('/todos');
     }
+    public function complete(Todo $todo){
+        $todo->completed = true;
+        $todo->save();
+        session()->flash('success', ' Weldone! To-do Completed sucessfully');
+        return redirect('/todos');
 
+    }
 
 
 }

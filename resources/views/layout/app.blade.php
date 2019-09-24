@@ -33,6 +33,11 @@
                 </div>
               </nav>
 <div class="container">
+    @if (session()->has('success'))
+    <div class="alert alert-success">
+        {{session()->get('success')}}
+    </div>
+    @endif
 @yield('content')
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
